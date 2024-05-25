@@ -2,3 +2,7 @@ pypdf
 langchain
 chromadb # Vector storage
 pytest
+unstructured
+langchain-community
+"unstructured[md]"
+openai
