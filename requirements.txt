@@ -4,5 +4,6 @@ chromadb # Vector storage
 pytest
 unstructured
 langchain-community
-"unstructured[md]"
+unstructured[md]
 openai
+boto3

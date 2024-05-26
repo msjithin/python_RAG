@@ -1,5 +1,8 @@
 # A RAG (Retrieval Augmented Generation) app in Python 
 
+https://www.youtube.com/watch?v=2TJxpyO3ei4
+
+
 Here I am building a python RAG apication that can let you query/chat with your PDFs using generative AI.
 
 This project contains covers:
@@ -10,8 +13,9 @@ This project contains covers:
 
 
 Sample data:
-* [AWS Lambda documentation](https://docs.aws.amazon.com/pdfs/serverless/latest/devguide/serverless-core.pdf)
 * [Alice in Wonderland](https://raw.githubusercontent.com/pixegami/langchain-rag-tutorial/main/data/books/alice_in_wonderland.md)
+* Calculus made easy
+* Monopoly
 
 
 Install dependencies.
@@ -26,8 +30,34 @@ Query the Chroma DB.
 ```
 python query_data.py "How does Alice meet the Mad Hatter?"
 ```
-We'll also need to set up an OpenAI account (and set the OpenAI key in your environment variable) for this to work.
 
+Using Ollama locally. We need to install Ollama locally, visit `https://ollama.com`
+```
+curl -fsSL https://ollama.com/install.sh | sh
+```
+To install available opensource models:
+```
+ollama pull llama2
+ollala pull mistral
+```
+To serve the model as a REST API on local host:
+```
+ollama serve
+```
+We also need to update the model name in embeddings in get_embedding_function.py .
 
+First we need to store the data in db and update when necessary. Start with populating db
+```
+python populate_database.py
+```
+
+Example usage:
+```
+python query_data.py "How many clues can I give in Codenames?"
+```
+To run test cases:
+```
+pytest test_rag.py 
+```
 
 I am following [pixegami](https://www.youtube.com/@pixegami). For the basic tutorial and seutp.
